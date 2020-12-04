@@ -16,3 +16,17 @@ class Sleep(models.Model):
         return reverse("Sleep_detail", kwargs={"pk": self.pk})
 
 
+class Coffee(models.Model):
+
+
+
+    class Meta:
+        verbose_name = _("Coffee")
+        verbose_name_plural = _("Coffees")
+
+    def __str__(self):
+        return self.name
+
+    def get_absolute_url(self):
+        return reverse("Coffee_detail", kwargs={"pk": self.pk})
+
