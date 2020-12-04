@@ -1,5 +1,6 @@
 from django.db import models
 from django.urls import reverse
+from django.utils import timezone
 from django.utils.translation import ugettext_lazy as _
 
 
@@ -12,11 +13,7 @@ class Sleep(models.Model):
         null=True,
     )
     bed = models.ForeignKey(
-        "core.Bed",
-        verbose_name=_("bed"),
-        on_delete=models.CASCADE,
-        blank=True,
-        null=True,
+        "core.Bed", verbose_name=_("bed"), on_delete=models.CASCADE, default=1
     )
     usana = models.ForeignKey(
         "core.Usana",
@@ -26,12 +23,32 @@ class Sleep(models.Model):
         null=True,
     )
 
+    slept_at = models.DateTimeField(
+        _("slept at"), auto_now=False, blank=True, null=True
+    )
+    woke_at = models.DateTimeField(_("woke at"), auto_now=False, blank=True, null=True)
+
+    coffee_at = models.DateTimeField(
+        _("coffee at"), auto_now=False, blank=True, null=True
+    )
+    usana_at = models.DateTimeField(
+        _("usana at"), auto_now=False, blank=True, null=True
+    )
+
+    created_at = models.DateTimeField(_("created at"), auto_now_add=True)
+    updated_at = models.DateTimeField(_("created at"), auto_now=True)
+
     class Meta:
         verbose_name = _("Sleep")
         verbose_name_plural = _("Sleeps")
 
     def __str__(self):
-        return f"You slept for {8} hours"
+        slept_at = self.slept_at or timezone.now()
+        woke_at = self.woke_at or timezone.now()
+        diff = woke_at - slept_at
+        hours = diff.seconds / 3600
+        rounded_hours = round(hours)
+        return f"Slept for {rounded_hours} hours"
 
     def get_absolute_url(self):
         return reverse("Sleep_detail", kwargs={"pk": self.pk})
