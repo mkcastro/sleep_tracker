@@ -1,0 +1,7 @@
+# PostgreSQL
+# ------------------------------------------------------------------------------
+POSTGRES_HOST=postgres
+POSTGRES_PORT=5432
+POSTGRES_DB=sleep_logger
+POSTGRES_USER=VIMDDTEaTorFIzJUQaWGelSdFSAIiNpQ
+POSTGRES_PASSWORD=sFZ4d7gMyPkF6brU4AKJLsGvHrLrYdalTRykrc80dftfS6VfDarlpNUHoPXJt72t
