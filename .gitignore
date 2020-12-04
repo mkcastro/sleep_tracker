@@ -275,3 +275,5 @@ sleep_logger/media/
 .env
 .envs/*
 !.envs/.local/
+
+.vscode
