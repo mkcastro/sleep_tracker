@@ -30,3 +30,17 @@ class Coffee(models.Model):
     def get_absolute_url(self):
         return reverse("Coffee_detail", kwargs={"pk": self.pk})
 
+class Bed(models.Model):
+
+
+
+    class Meta:
+        verbose_name = _("Bed")
+        verbose_name_plural = _("Beds")
+
+    def __str__(self):
+        return self.name
+
+    def get_absolute_url(self):
+        return reverse("Bed_detail", kwargs={"pk": self.pk})
+
