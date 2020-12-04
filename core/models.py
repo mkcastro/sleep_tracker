@@ -2,11 +2,8 @@ from django.db import models
 from django.urls import reverse
 from django.utils.translation import ugettext_lazy as _
 
-# Create your models here.
+
 class Sleep(models.Model):
-
-
-
     class Meta:
         verbose_name = _("Sleep")
         verbose_name_plural = _("Sleeps")
@@ -19,9 +16,6 @@ class Sleep(models.Model):
 
 
 class Coffee(models.Model):
-
-
-
     class Meta:
         verbose_name = _("Coffee")
         verbose_name_plural = _("Coffees")
@@ -32,10 +26,8 @@ class Coffee(models.Model):
     def get_absolute_url(self):
         return reverse("Coffee_detail", kwargs={"pk": self.pk})
 
+
 class Bed(models.Model):
-
-
-
     class Meta:
         verbose_name = _("Bed")
         verbose_name_plural = _("Beds")
@@ -46,10 +38,8 @@ class Bed(models.Model):
     def get_absolute_url(self):
         return reverse("Bed_detail", kwargs={"pk": self.pk})
 
+
 class Usana(models.Model):
-
-
-
     class Meta:
         verbose_name = _("Usana")
         verbose_name_plural = _("Usanas")
