@@ -44,3 +44,16 @@ class Bed(models.Model):
     def get_absolute_url(self):
         return reverse("Bed_detail", kwargs={"pk": self.pk})
 
+class Usana(models.Model):
+
+
+
+    class Meta:
+        verbose_name = _("Usana")
+        verbose_name_plural = _("Usanas")
+
+    def __str__(self):
+        return self.name
+
+    def get_absolute_url(self):
+        return reverse("Usana_detail", kwargs={"pk": self.pk})
