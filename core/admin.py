@@ -5,7 +5,7 @@ from .models import Bed, Coffee, Sleep, Usana
 
 @admin.register(Sleep)
 class SleepAdmin(admin.ModelAdmin):
-    pass
+    ordering = ["-woke_at"]
 
 
 @admin.register(Coffee)
