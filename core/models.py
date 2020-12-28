@@ -43,9 +43,9 @@ class Sleep(models.Model):
         verbose_name_plural = _("Sleeps")
 
     def __str__(self):
-        rounded_hours = humanize.naturaldelta(self.woke_at - self.slept_at)
+        duration = humanize.naturaldelta(self.woke_at - self.slept_at)
 
-        return f"Slept for {rounded_hours}"
+        return f"Slept for {duration}"
 
     def get_absolute_url(self):
         return reverse("Sleep_detail", kwargs={"pk": self.pk})
