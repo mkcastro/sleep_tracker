@@ -1,6 +1,7 @@
 import humanize
 from django.db import models
 from django.urls import reverse
+from django.utils import timezone
 from django.utils.translation import ugettext_lazy as _
 
 
@@ -44,8 +45,9 @@ class Sleep(models.Model):
 
     def __str__(self):
         duration = humanize.naturaldelta(self.woke_at - self.slept_at)
+        ago = humanize.naturaltime(timezone.now() - self.woke_at)
 
-        return f"Slept for {duration}"
+        return f"Slept for {duration} about {ago}"
 
     def get_absolute_url(self):
         return reverse("Sleep_detail", kwargs={"pk": self.pk})
