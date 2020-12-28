@@ -1,6 +1,6 @@
+import humanize
 from django.db import models
 from django.urls import reverse
-from django.utils import timezone
 from django.utils.translation import ugettext_lazy as _
 
 
@@ -43,11 +43,8 @@ class Sleep(models.Model):
         verbose_name_plural = _("Sleeps")
 
     def __str__(self):
-        slept_at = self.slept_at or timezone.now()
-        woke_at = self.woke_at or timezone.now()
-        diff = woke_at - slept_at
-        hours = diff.seconds / 3600
-        rounded_hours = round(hours)
+        rounded_hours = humanize.naturaltime(self.woke_at - self.slept_at)
+
         return f"Slept for {rounded_hours} hours"
 
     def get_absolute_url(self):
